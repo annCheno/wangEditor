@@ -683,7 +683,7 @@ var config = {
     // 自定义上传图片超时时间 ms
     uploadImgTimeout: 10000,
 
-    // 上传图片 hook 
+    // 上传图片 hook
     uploadImgHooks: {
         // customInsert: function (insertLinkImg, result, editor) {
         //     console.log('customInsert')
@@ -4457,6 +4457,11 @@ Editor.prototype = {
             // 输入法结束才出发 onchange
             compositionEnd && _this.change && _this.change();
         });
+        // 绑定 keyup事件
+        $textContainerElem.on('keydown', function (e) {
+            compositionEnd && _this.onkeydown && _this.onkeydown(e);
+        });
+
         $toolbarElem.on('click', function () {
             this.change && this.change();
         });
@@ -4591,6 +4596,13 @@ Editor.prototype = {
                     beforeChangeHtml = currentHtml;
                 }, onchangeTimeout);
             };
+        }
+
+        var onkeydown = config$$1.onkeydown;
+        if(onkeydown && typeof onkeydown === 'function'){
+            this.onkeydown = function (e) {
+                onkeydown(e);
+            }
         }
 
         // -------- 绑定 onblur 事件 --------
