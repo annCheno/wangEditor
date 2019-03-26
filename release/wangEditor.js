@@ -2113,7 +2113,7 @@ Code.prototype = {
 // 构造函数
 function Emoticon(editor) {
     this.editor = editor;
-    this.$elem = $('<div class="w-e-menu">\n            <i class="w-e-icon-happy"></i>\n        </div>');
+    this.$elem = $('<div class="w-e-menu">\n            <i class="w-e-icon-happy" title="表情"></i>\n        </div>');
     this.type = 'panel';
 
     // 当前是否 active 状态
