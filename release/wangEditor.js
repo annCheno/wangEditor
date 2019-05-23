@@ -4395,7 +4395,12 @@ Editor.prototype = {
             $children = $toolbarSelector.children();
 
             // 添加到 DOM 结构中
-            $toolbarSelector.append($toolbarElem).append($textContainerElem);
+            // 若工具栏没有任何工具按钮,则不显示工具栏
+            if(this.config.menus && this.config.menus.length > 0){
+                $toolbarSelector.append($toolbarElem).append($textContainerElem);
+            }else{
+              $toolbarSelector.append($textContainerElem);
+            }
 
             // 自行创建的，需要配置默认的样式
             $toolbarElem.css('background-color', '#f1f1f1').css('border', '1px solid #ccc');
