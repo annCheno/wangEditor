@@ -4429,7 +4429,11 @@ Editor.prototype = {
 
         // 设置通用的 class
         $toolbarElem.addClass('w-e-toolbar');
-        $textContainerElem.addClass('w-e-text-container');
+        if(this.config.menus && this.config.menus.length > 0){
+            $textContainerElem.addClass('w-e-text-container');
+        }else{
+            $textContainerElem.addClass('w-e-text-container-kong');
+        }
         $textContainerElem.css('z-index', zIndex);
         $textElem.addClass('w-e-text');
 
